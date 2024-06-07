@@ -30,13 +30,19 @@ def foo():
         enhanced_image = enhance_image(image)
         enhanced_image.show()
         # Create a new folder called 'output_images' if it doesn't exist
-        if not os.path.exists('output_images'):
-            os.makedirs('output_images')
+        if not os.path.exists('train'):
+            os.makedirs('train')
+        
+        # Create a new file named output_images_csv, which has 
             
         # Save the image to the 'output_images' folder with names as output_image_0.png, output_image_1.png, etc.  
         
-        enhanced_image.save('output_images/output_image_' + str(i) + '.png')
-
+        enhanced_image.save(str(i+1) + '.png')
+        
+        
+    
+    
+        
 
 
 def basic_driver():
