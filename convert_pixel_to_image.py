@@ -33,7 +33,16 @@ def foo():
         if not os.path.exists('train'):
             os.makedirs('train')
         
-        # Create a new file named output_images_csv, which has 
+        # Create a new file named output_images_csv, which has first column as the name of the image and second column as the pixel label i.e.., csv_data.iloc[i][0]
+        
+        output_images_csv = 'output_images_csv.csv'
+        image_name =  str(i+1) + '.png'
+        image_label = csv_data.iloc[i][0]
+        image_info = pd.DataFrame({'Image Name': [image_name], 'Image Label': [image_label]})
+        image_info.to_csv(output_images_csv, index=False, mode='a', header=not os.path.exists(output_images_csv))
+        
+        
+        
             
         # Save the image to the 'output_images' folder with names as output_image_0.png, output_image_1.png, etc.  
         
