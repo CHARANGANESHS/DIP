@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageEnhance, ImageFilter
 
 def create_grayscale_image(pixel_data, width, height):
     # Create a new grayscale image with the given width and height
@@ -7,6 +7,13 @@ def create_grayscale_image(pixel_data, width, height):
     # Put pixel data into the image
     image.putdata(pixel_data)
 
+    return image
+
+def enhance_image(image):
+    enhancer = ImageEnhance.Contrast(image)
+    image = enhancer.enhance(2.0)
+
+    image = image.filter(ImageFilter.SHARPEN)
     return image
 
 # Example pixel data for a 2x2 grayscale image
@@ -23,9 +30,12 @@ height = 2
 # Create the image
 image = create_grayscale_image(pixel_data, width, height)
 
+#Enhance the image
+enhanced_image = enhance_image(image)
+
 # Display the image
-image.show()
+enhanced_image.show()
 
 # Save the image to a file
-image.save('output_grayscale_image.png')
+enhanced_image.save('output_grayscale_image.png')
 
