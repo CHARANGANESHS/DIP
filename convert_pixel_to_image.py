@@ -38,7 +38,7 @@ def foo():
         output_images_csv = 'output_images_csv.csv'
         image_name =  str(i+1) + '.png'
         image_label = csv_data.iloc[i][0]
-        image_info = pd.DataFrame({'Image Name': [image_name], 'Image Label': [image_label]})
+        image_info = pd.DataFrame({'Image Name': image_name, 'Image Label': image_label})
         image_info.to_csv(output_images_csv, index=False, mode='a', header=not os.path.exists(output_images_csv))
         
         
